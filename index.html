@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syed Hassan Razi Haider</title>
     <link rel="icon" type="image/x-icon" href="/static/logo.png">
-    <link rel="icon" type="image/svg+xml" href="/static/logo.png">
 <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -35,13 +34,13 @@
             border-right: 2px solid rgba(255, 255, 255, 0.75);
             white-space: nowrap;
             margin: 0 auto;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            animation: typing 3.5s steps(28, end), blink-caret 0.75s step-end infinite;
         }
         @keyframes typing {
             from { width: 0 }
             to { width: 100% }
         }
-        @keyframes blink-caret {
+@keyframes blink-caret {
             from, to { border-color: transparent }
             50% { border-color: rgba(255, 255, 255, 0.75) }
         }
@@ -51,11 +50,10 @@
     <div id="vanta-bg" class="absolute inset-0 z-0"></div>
     
     <div class="relative z-10 text-center px-6 max-w-2xl">
-        <h1 class="text-4xl md:text-6xl font-light mb-8 glow-text typewriter">
+        <h1 class="text-4xl md:text-6xl font-light mb-8 glow-text" id="typewriter-text">
             Syed Hassan Razi Haider
         </h1>
-        
-        <div class="mt-12 pulse">
+<div class="mt-12 pulse">
             <a href="mailto:hhaider@gmail.com" 
                class="inline-flex items-center text-lg md:text-xl text-gray-300 hover:text-white transition-all duration-300 border border-gray-600 hover:border-white rounded-full px-6 py-3 hover:scale-105">
                 <i data-feather="send" class="w-5 h-5 mr-2"></i>
@@ -83,9 +81,28 @@
             backgroundColor: 0x0,
             size: 0.8
         });
-
         // Initialize feather icons
         feather.replace();
+        
+        // Typewriter effect
+        const typewriterText = document.getElementById('typewriter-text');
+        const text = typewriterText.textContent;
+        typewriterText.textContent = '';
+        typewriterText.style.borderRight = '2px solid rgba(255, 255, 255, 0.75)';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                typewriterText.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                typewriterText.style.borderRight = 'none';
+            }
+        }
+        
+        // Start typewriter effect after a brief delay
+        setTimeout(typeWriter, 500);
         
         // Add subtle mouse movement effect
         document.addEventListener('mousemove', (e) => {
@@ -93,6 +110,6 @@
             const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
             document.querySelector('.relative').style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
-    </script>
+</script>
 </body>
 </html>
