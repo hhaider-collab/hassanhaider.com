@@ -1,115 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syed Hassan Razi Haider</title>
-    <link rel="icon" type="image/x-icon" href="/static/logo.png">
-<script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            overflow: hidden;
-        }
-        .glow-text {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-                         0 0 20px rgba(255, 255, 255, 0.5),
-                         0 0 30px rgba(255, 255, 255, 0.3);
-        }
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
-        }
-        .typewriter {
-            overflow: hidden;
-            border-right: 2px solid rgba(255, 255, 255, 0.75);
-            white-space: nowrap;
-            margin: 0 auto;
-            animation: typing 3.5s steps(28, end), blink-caret 0.75s step-end infinite;
-        }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-@keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: rgba(255, 255, 255, 0.75) }
-        }
-    </style>
-</head>
-<body class="bg-black text-white min-h-screen flex items-center justify-center">
-    <div id="vanta-bg" class="absolute inset-0 z-0"></div>
-    
-    <div class="relative z-10 text-center px-6 max-w-2xl">
-        <h1 class="text-4xl md:text-6xl font-light mb-8 glow-text" id="typewriter-text">
-            Syed Hassan Razi Haider
-        </h1>
-<div class="mt-12 pulse">
-            <a href="mailto:hhaider@gmail.com" 
-               class="inline-flex items-center text-lg md:text-xl text-gray-300 hover:text-white transition-all duration-300 border border-gray-600 hover:border-white rounded-full px-6 py-3 hover:scale-105">
-                <i data-feather="send" class="w-5 h-5 mr-2"></i>
-                hhaider@gmail.com
-            </a>
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden">
+      {/* Animated background particles */}
+      <div className="absolute inset-0">
+        <div className="particle particle-1"></div>
+        <div className="particle particle-2"></div>
+        <div className="particle particle-3"></div>
+      </div>
+
+      {/* Main content */}
+      <div className="text-center z-10 space-y-8">
+        <div className="space-y-4">
+          <h1 className="text-6xl md:text-8xl font-thin tracking-wider typewriter-1">
+            SYED HASSAN
+          </h1>
+          <h2 className="text-6xl md:text-8xl font-thin tracking-widest typewriter-2">
+            RAZI HAIDER
+          </h2>
         </div>
 
-        <div class="mt-16 text-xs text-gray-500 opacity-60">
-            <p>Transformers...</p>
-        </div>
+        <div className="w-32 h-px bg-white mx-auto animate-fade-in"></div>
+
+        <a
+          href="mailto:hhaider@gmail.com"
+          className="inline-block text-lg md:text-xl tracking-wide animate-fade-in border border-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300"
+        >
+          CONTACT
+        </a>
+      </div>
+
+      {/* Corner accents */}
+      <div className="absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-white opacity-30"></div>
+      <div className="absolute bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-white opacity-30"></div>
+
+      <style jsx global>{`
+        .typewriter-1 {
+          opacity: 0;
+          animation: typewriter 2s ease-out forwards;
+          animation-delay: 0.5s;
+        }
+        
+        .typewriter-2 {
+          opacity: 0;
+          animation: typewriter 2s ease-out forwards;
+          animation-delay: 1.5s;
+        }
+        
+        .animate-fade-in {
+          opacity: 0;
+          animation: fadeIn 1s ease-out forwards;
+          animation-delay: 3s;
+        }
+        
+        @keyframes typewriter {
+          0% {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        .particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: white;
+          border-radius: 50%;
+          opacity: 0.4;
+        }
+        
+        .particle-1 {
+          top: 20%;
+          left: 10%;
+          animation: float 8s infinite ease-in-out;
+        }
+        
+        .particle-2 {
+          top: 60%;
+          right: 15%;
+          animation: float 10s infinite ease-in-out reverse;
+        }
+        
+        .particle-3 {
+          bottom: 30%;
+          left: 20%;
+          animation: float 12s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(50px, -30px);
+          }
+        }
+      `}</style>
     </div>
-
-    <script>
-        // Initialize Vanta.js globe
-        VANTA.GLOBE({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x2a2a2a,
-            backgroundColor: 0x0,
-            size: 0.8
-        });
-        // Initialize feather icons
-        feather.replace();
-        
-        // Typewriter effect
-        const typewriterText = document.getElementById('typewriter-text');
-        const text = typewriterText.textContent;
-        typewriterText.textContent = '';
-        typewriterText.style.borderRight = '2px solid rgba(255, 255, 255, 0.75)';
-        
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                typewriterText.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            } else {
-                typewriterText.style.borderRight = 'none';
-            }
-        }
-        
-        // Start typewriter effect after a brief delay
-        setTimeout(typeWriter, 500);
-        
-        // Add subtle mouse movement effect
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-            document.querySelector('.relative').style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-</script>
-</body>
-</html>
+  );
+}
